@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.concrete.PersonMapper" >
+
+    <select id="search" resultType="com.concrete.Person">
+        select * from person
+        <where>
+            <if test="firstname != null">
+                firstname = #{firstname}
+            </if>
+            <if test="lastname != null">
+                and lastname = #{lastname}
+            </if>
+            <if test="age != 0 and age != null">
+                and age = #{age}
+            </if>
+        </where>
+    </select>
+
+</mapper>
+
